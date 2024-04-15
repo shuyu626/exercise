@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 老師版 正解
+        const encrypt = (text1, key1) => {
+            // 先轉大寫
+            text1 = text1.toUpperCase()
+            // 建立結果字串
+            let result1 = ''
+            // 迴圈每個字
+            for (let a = 0; a < text1.length; a++) {
+                // 取目前文字的ASCII
+                let code = text1.charCodeAt(a)
+                // 不是空白才加密
+                if (code !== 32) {
+                    code = (code - 65 + key1) % 26 + 65
+                    // 放進結果字串
+                    result1 += String.fromCharCode(code)
+                } else {
+                    result1 += ' '
+                }
+            }
+            return result1
+        }
+        const text1 = prompt('text1')
+        const key1 = prompt('key1')
+        document.write(encrypt(text1, parseInt(key1)))
+
+
+
+
+
+
+        // 最終版 金鑰超過26的問題 沒有用餘數QQ
+        const trans = (text, key) => {
+            let arr = []
+            for (let i = 0; i < text.length; i++) {
+                let add_key = text.charCodeAt(i) + key //文字轉換成編碼數字再加上數字密鑰
+                let isupper = text[i] === text[i].toUpperCase() // 確認輸入的字為大寫還小寫
+                if (add_key - key == 32) {
+                    add_key -= key    // 把空格(ASCII :32)轉回來
+                } else {
+                    if (isupper) {
+                        if (add_key > 90) {  // A-Z : 65-90，字母共26個，超過後-26從A開始
+                            add_key -= 26
+                        }
+                    } else {
+                        if (add_key > 122) { // a-z : 97-122，字母共26個，超過後-26從a開始
+                            add_key -= 26
+                        }
+                    }
+                }
+                let tran_text = String.fromCharCode(add_key) // 變成密文
+                arr.push(tran_text)
+            } let result = arr.join('')// 列印出密文並刪除逗號(,)
+
+            let finalResult = ''  // 大小寫切換
+            if (text === text.toUpperCase()) {
+                finalResult = result.toLowerCase()
+            } else {
+                finalResult = result.toUpperCase()
+            } return finalResult
+        }
+        // *1文字轉換為數字
+        let text = prompt("請輸入英文明文")
+        let key = prompt("請輸入金鑰") * 1
+        document.write(trans(text1, key))
+
+
+
+
+
+        // 第二版 空格問題 大小寫切換問題
+        // const trans = (text, key) => {
+        //     let arr = []
+        //     for (let i = 0; i < text.length; i++) {
+        //         let add_key = text.charCodeAt(i) + key //文字轉換成編碼數字再加上數字密鑰
+        //         let isupper = text[i] === text[i].toUpperCase() // 確認輸入的字為大寫還小寫
+        //         if (add_key - key == 32) {
+        //             add_key -= key    // 把空格(ASCII :32)轉回來
+        //         } else {
+        //             if (isupper) {
+        //                 if (add_key > 90) {  // A-Z : 65-90，字母共26個，超過後-26從A開始
+        //                     add_key -= 26
+        //                 }
+        //             } else {
+        //                 if (add_key > 122) { // a-z : 97-122，字母共26個，超過後-26從a開始
+        //                     add_key -= 26
+        //                 }
+        //             }
+        //         }
+        //         let tran_text = String.fromCharCode(add_key) // 變成密文
+        //         arr.push(tran_text)
+        //     }
+        //     document.write(arr)
+        // }
+        // // *1文字轉換為數字
+        // let text1 = prompt("請輸入英文明文")
+        // let key = prompt("請輸入金鑰") * 1
+        // trans(text1, key)
+
+
+
+
+        // 第一版  大小寫問題 超過z會有問題
+        // const trans = (text, key) => {
+        //     for (let i = 0; i < text.length; i++) {
+        //         let arr = []
+        //         let a = text.charCodeAt(i) + key //加上數字密鑰
+        //         if (a > 122) {
+        //             a -= 26
+        //         }
+        //         let b = String.fromCharCode(a)
+        //         let c = b.toUpperCase()  // 變成密文
+        //         let d = arr.push(c) // 放入陣列
+        //         document.write(arr)
+        //     }
+        // }
+        // let text1 = prompt("請輸入英文明文")
+        // let key = prompt("請輸入金鑰") * 1 // *1文字轉換為數字
+        // trans(text1, key)
+
+
+        // if (arr[i] === arr[i].toUpperCase()) {
+        //     let a = arr[i].toLowerCase()
+        // } else { let b = arr[i].toUpperCase() }
+
+    </script>
+</body>
+
+</html>
