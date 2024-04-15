@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const isPalindrome = (text) => {
+        //     let textReverse = '' // 宣告textReverse為文字到著讀
+        //     for (let i = text.length - 1; i >= 0; i--) { // 索引從0開始，故i>=0，且須小於文字的長度
+        //         textReverse += text[i] // 將文字排序倒過來 123 -> 321
+        //     }
+        //     return text === textReverse  // 如果排序倒過來與原本的文字相等，則為迴文
+        // }
+        // const result = isPalindrome(prompt('輸入文字'))
+        // console.log(result)
+
+
+        // 老師版 - 除2 ，頭跟尾比對；第二和倒數第二比對；若為奇數個字的句子，最中間的字無須比對
+        const isPalindrome = (text) => {
+            for (let i = 0; i < text.length / 2; i++) {
+                if (text[i] !== text[text.length - 1 - i]) {
+                    return false
+                }
+            }
+            return true
+        }
+        const result = isPalindrome(prompt('輸入文字'))
+        console.log(result)
+        // abcba
+        // 01234
+        // text.length = 5
+        // 1  另一個字
+        // 0  4
+        // 1  3
+        // 2  2
+        // 3  1
+        // 4  0
+
+
+
+
+
+    </script>
+</body>
+
+</html>
