@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #palette {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background: rgba(0, 0, 0)
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 製作有隨機功能的顏色選擇器 -->
+    <!-- 第二版 -->
+    <div id="palette"></div>
+    紅色<input type="range" id="rangeRed" min=0 max="255" step="1" value="0">
+    <span id="redValue">0</span>
+    <input type="button" value="隨機" id="randomRed" class="button">
+    <br>
+    綠色<input type="range" id="rangeGreen" min=0 max="255" step="1" value="0">
+    <span id="greenValue">0</span>
+    <input type="button" value="隨機" id="randomGreen" class="button">
+    <br>
+    藍色<input type="range" id="rangeBlue" min=0 max="255" step="1" value="0">
+    <span id="blueValue">0</span>
+    <input type="button" value="隨機" id="randomBlue" class="button">
+
+    <script>
+        const palette = document.getElementById('palette')// #palette 調色盤
+
+        const rangeRed = document.getElementById('rangeRed') // rangeRed 紅色拉條
+        const rangeGreen = document.getElementById('rangeGreen')// rangeGreen 綠色拉條
+        const rangeBlue = document.getElementById('rangeBlue')// rangeBlue 藍色拉條
+        const range_arr = [rangeRed, rangeGreen, rangeBlue]
+
+        const redValue = document.getElementById('redValue')// redValue 紅色值
+        const greenValue = document.getElementById('greenValue')// greenValue 綠色值
+        const blueValue = document.getElementById('blueValue')// blueValue 藍色值
+        const value_arr = [redValue, greenValue, blueValue]
+
+        const randomRed = document.getElementById('randomRed')//randomRed 紅色隨機
+        const randomGreen = document.getElementById('randomGreen')//randomGreen 綠色隨機
+        const randomBlue = document.getElementById('randomBlue')//randomBlue 藍色隨機
+        const random_arr = [randomRed, randomGreen, randomBlue]
+
+
+        // 第二版
+        for (const el of range_arr) {
+            el.addEventListener('input', () => {
+                for (let i = 0; i < range_arr.length; i++)
+                    value_arr[i].innerText = range_arr[i].value
+                palette.style.background = `rgba(${rangeRed.value}, ${rangeGreen.value}, ${rangeBlue.value})`
+            })
+        }
+        for (let j = 0; j < random_arr.length; j++) {
+            random_arr[j].addEventListener('click', () => {
+                const index = j // 處理引用事件監聽器外變數的問題
+                range_arr[index].value = Math.round(Math.random() * 255)
+                value_arr[index].innerText = range_arr[index].value
+                palette.style.background = `rgba(${rangeRed.value}, ${rangeGreen.value}, ${rangeBlue.value})`
+            })
+        }
+
+
+
+
+        // 第一版
+        // rangeRed.addEventListener('input', () => {
+        //     redValue.innerText = rangeRed.value
+        //     palette.style.background = `rgba(${rangeRed.value}, ${rangeGreen.value}, ${rangeBlue.value})`
+
+        // })
+        // rangeGreen.addEventListener('input', () => {
+        //     greenValue.innerText = rangeGreen.value
+        //     palette.style.background = `rgba(${rangeRed.value}, ${rangeGreen.value}, ${rangeBlue.value})`
+
+        // })
+        // rangeBlue.addEventListener('input', () => {
+        //     blueValue.innerText = rangeBlue.value
+        //     palette.style.background = `rgba(${rangeRed.value}, ${rangeGreen.value}, ${rangeBlue.value})`
+        // })
+
+        // randomRed.addEventListener('click', () => {
+        //     rangeRed.value = Math.round(Math.random() * 255)
+        //     redValue.innerText = rangeRed.value
+        //     palette.style.background = `rgba(${rangeRed.value}, ${rangeGreen.value}, ${rangeBlue.value})`
+        // })
+
+        // randomGreen.addEventListener('click', () => {
+        //     rangeGreen.value = Math.round(Math.random() * 255)
+        //     greenValue.innerText = rangeGreen.value
+        //     palette.style.background = `rgba(${rangeRed.value}, ${rangeGreen.value}, ${rangeBlue.value})`
+        // })
+
+        // randomBlue.addEventListener('click', () => {
+        //     rangeBlue.value = Math.round(Math.random() * 255)
+        //     blueValue.innerText = rangeBlue.value
+        //     palette.style.background = `rgba(${rangeRed.value}, ${rangeGreen.value}, ${rangeBlue.value})`
+        // })
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
