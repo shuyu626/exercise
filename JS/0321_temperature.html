@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 將陣列內容印出成表格
+        const tem = [
+            [18.2, 17.3, 15.0, 13.4],
+            [23.8, 25.1, 20.6, 17.8],
+            [20.6, 21.5, 18.4, 15.7]
+        ]
+        document.write(`<table border="1">`)
+        for (let i = 0; i < tem.length; i++) {
+            document.write(`<tr>`)
+            for (let j = 0; j < tem[i].length; j++) {
+                document.write(`<td>${tem[i][j]}</td > `)
+            }
+            document.write(`</tr > `)
+        }
+        document.write(`</table >`)
+
+
+        document.write(`<hr>`)
+
+
+
+        // 2. 每日的平均溫度
+        const week = ['星期一', '星期二', '星期三', '星期四']
+        for (let c = 0; c <= tem.length; c++) {
+            let average = 0
+            let temTotal = 0
+            for (let d = 0; d < tem.length; d++) {
+                temTotal += tem[d][c] * 1
+                average = temTotal / tem.length
+            }
+            document.write(`${week[c]}的平均溫度${average}<br>`)
+        }
+
+        document.write(`<hr>`)
+
+
+
+        // 3. 時段一、時段二、時段三的平均氣溫
+
+        const time = ['時段一', '時段二', '時段三']
+        for (let a in tem) {
+            let timeAverge = 0
+            let timetotal = 0
+            for (let b in tem[a]) {
+                timetotal += tem[a][b]
+                timeAverge = timetotal / tem[a].length
+            }
+            document.write(`${time[a]}平均氣溫為${timeAverge}<br>`)
+
+        }
+
+        document.write(`<hr>`)
+
+        //4. 溫度最高的日子與時段
+        //5. 溫度最低的日子與時段
+        let maxtime = 0
+        let maxday = 0
+        let mintime = 0
+        let minday = 0
+        let max = tem[0][0]
+        let min = tem[0][0]
+        for (let m = 0; m < tem.length; m++) {
+            for (let n = 0; n < tem[m].length; n++) {
+                if (tem[m][n] > max) {
+                    max = tem[m][n]
+                    maxtime = m
+                    maxday = n
+                }
+                if (tem[m][n] < min) {
+                    min = tem[m][n]
+                    mintime = m
+                    minday = n
+                }
+
+            }
+        }
+        document.write(`最高溫:星期${maxday + 1} ; 時段${maxtime + 1} ; 溫度:${max}<br>`)
+        document.write(`最低溫:星期${minday + 1} ; 時段${mintime + 1} ; 溫度:${min}`)
+
+
+
+    </script>
+
+</body>
+
+</html>
