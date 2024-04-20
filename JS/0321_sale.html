@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 假設某一公司有五種產品 A、B、C、D、E
+        // 其單價分別為 12、16、10、14、15 元
+        // 而該公司共有三位銷售員，他們在某個月份的銷售量如下所示
+        // [33, 32, 56, 45, 33],
+        // [77, 33, 68, 45, 23],
+        // [43, 55, 43, 67, 65]
+        // 請將上表的內容設定成二維陣列，變數數量和陣列格式不限，並依序完成下列各題
+
+        // 1.每一個銷售員的銷售總金額
+        // 老師的作法
+        const price = [12, 16, 10, 14, 15]
+        const data = [
+            [33, 32, 56, 45, 33],
+            [77, 33, 68, 45, 23],
+            [43, 55, 43, 67, 65]
+        ]
+        const totalSales = [0, 0, 0]
+        const totalProducts = [0, 0, 0, 0, 0]
+        for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < data[i].length; j++) {
+                const total = data[i][j] * price[j]
+                totalProducts[j] += total
+                totalSales[i] += total
+            }
+        }
+        document.write(totalSales + '<br>')
+        document.write(totalProducts + '<br>')
+
+
+
+
+
+
+
+
+
+
+        // 最終版
+        for (let i in data) { // 銷售員1 - 3
+            let sum = 0 // 初始化總金額，避免金額持續累加
+            for (let j in price) { // A - E價格
+                sum += price[j] * data[i][j]
+            } document.write(`銷售員${i * 1 + 1}銷售金額為${sum}元<br>`)
+        }
+
+
+        // 第一版
+        // let sale1 = 0
+        // let sale2 = 0
+        // let sale3 = 0
+        // for (let i = 0; i < data[0].length; i++) {
+        // for (let i in data[0]) { // <=> for (let i = 0; i < data[0].length; i++)
+        //     sale1 += product[i]  * data[0][i] 
+        // } document.write(`銷售員1銷售金額為${sale1}元<br>`)
+        // for (let i in data[1]) {
+        //     sale2 += product[i] * data[1][i] 
+        // } document.write(`銷售員2銷售金額為${sale2}元<br>`)
+        // for (let i in data[2]) {
+        //     sale3 += product[i]  * data[2][i] 
+        // } document.write(`銷售員3銷售金額為${sale3}元<br>`)
+
+
+
+        document.write(`<hr>`)
+
+
+        // 2. 每一項產品的銷售總金額
+        const product = ['A', 'B', 'C', 'D', 'E'] // 可取代if (a == 0) {product = 'A'}...
+        for (let a in price) {
+            let productSum = 0 // 產品銷售額
+            let productTotal = 0 // 產品總數量
+            for (let b in data) {
+                productTotal += data[b][a]
+                productSum = (price[a]) * productTotal
+            }
+            document.write(`產品${product[a]}銷售總金額為${productSum}元<br>`);
+        }
+
+
+        // 第一版
+        // let suma = 0
+        // let totala = 0
+        // for (let j in data) {
+        //     totala += data[j][0]  // A賣出的數量
+        //     suma = price[0] * totala // A價錢*A賣出的總數量
+        // } document.write(`產品A銷售總金額為${suma}元<br>`)
+
+        // let sumb = 0
+        // let totalb = 0
+        // for (let j in data) {
+        //     totalb += data[j][1]
+        //     sumb = price[1] * totalb
+        // } document.write(`產品B銷售總金額為${sumb}元<br>`)
+
+        // let sumc = 0
+        // let totalc = 0
+        // for (let j in data) {
+        //     totalc += data[j][2]
+        //     sumc = price[2] * totalc
+        // } document.write(`產品C銷售總金額為${sumc}元<br>`)
+
+        // let sumd = 0
+        // let totald = 0
+        // for (let j in data) {
+        //     totald += data[j][3]
+        //     sumd = price[3] * totald
+        // } document.write(`產品D銷售總金額為${sumd}元<br>`)
+
+        // let sume = 0
+        // let totale = 0
+        // for (let j in data) {
+        //     totale += data[j][4]  // E賣出的數量
+        //     sume = price[4] * totale
+        // } document.write(`產品C銷售總金額為${sume}元<br>`)
+
+
+    </script>
+</body>
+
+</html>
