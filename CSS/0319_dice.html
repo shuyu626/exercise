@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: white;
+            background: linear-gradient(45deg, #ccc, white);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            border: 0.5px solid black;
+            border-radius: 5px;
+            display: inline-block;
+            position: relative;
+
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .c {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: black;
+        }
+
+        .l_t {
+            left: 10px;
+            top: 10px;
+        }
+
+        .l_b {
+            left: 10px;
+            bottom: 10px;
+        }
+
+        .r_b {
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .r_t {
+            right: 10px;
+            top: 10px;
+        }
+
+        .r_c {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .l_c {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="dot c red"></div>
+        </div>
+        <div class="box">
+            <div class="dot l_t"></div>
+            <div class="dot r_b"></div>
+        </div>
+        <div class="box">
+            <div class="dot l_t "></div>
+            <div class="dot c"></div>
+            <div class="dot r_b"></div>
+        </div>
+        <div class="box">
+            <div class="dot l_t red"></div>
+            <div class="dot r_t red"></div>
+            <div class="dot l_b red"></div>
+            <div class="dot r_b red"></div>
+        </div>
+        <div class="box">
+            <div class="dot l_t "></div>
+            <div class="dot c"></div>
+            <div class="dot r_b"></div>
+            <div class="dot r_t"></div>
+            <div class="dot l_b"></div>
+        </div>
+        <div class="box">
+            <div class="dot l_t"></div>
+            <div class="dot r_t"></div>
+            <div class="dot r_b"></div>
+            <div class="dot l_b"></div>
+            <div class="dot r_c"></div>
+            <div class="dot l_c"></div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
